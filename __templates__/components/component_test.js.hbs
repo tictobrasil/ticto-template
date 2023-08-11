@@ -1,0 +1,12 @@
+import * as React from 'react';
+import { describe, expect, test } from "vitest";
+import { {{ pascalCase name }} }from './';
+import { render, screen } from "@testing-library/react";
+
+describe('Render {{ pascalCase name }}', () => {
+  test('Should be {{ pascalCase name }} exist', () => {
+    render(<{{ pascalCase name }} />);
+    const existComponent = screen.getByText(`{{pascalCase name}}`);
+    expect(existComponent).toBeTruthy();
+  });
+});
