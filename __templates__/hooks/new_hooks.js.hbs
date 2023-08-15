@@ -1,0 +1,27 @@
+import { httpApi } from "@/infra/http/api";
+import { queryClient } from "@/infra/queryClient/queryClient";
+import { useMutation } from "react-query";
+import { toast } from "react-toastify";
+
+// Mudar método http
+
+const fetch = async (params: any) => {
+    const { data } = await httpApi.delete(`/'route here'/${params}`);
+    return data;
+};
+
+const useDataMutation = () => {
+    return useMutation(fetch, {
+        onSuccess: () => {
+            queryClient.invalidateQueries("route here");
+            toast.success("Deletado com sucesso!");
+        },
+        onError: () => {
+            toast.error(
+                "Aconteceu um erro inesperado ao deletar o item, estamos tentando resolver esse problema!",
+            );
+        },
+    });
+};
+
+export default useDataMutation;

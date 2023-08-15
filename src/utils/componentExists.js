@@ -31,6 +31,11 @@ function hooksExists(comp) {
     return allHooks.indexOf(`${comp}`) >= 0;
 }
 
+function contextExists(comp) {
+    const allHooks = fs.readdirSync("src/context");
+    return allHooks.indexOf(`${comp}`) >= 0;
+}
+
 function factoryExists(comp) {
     const allHooks = fs.readdirSync("src/utils/factories");
     return allHooks.indexOf(`${comp}`) >= 0;
@@ -62,4 +67,5 @@ module.exports = {
     hooksExists,
     factoryExists,
     interfaceExists,
+    contextExists,
 };
